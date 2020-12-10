@@ -1,0 +1,41 @@
+
+@import '~antd/dist/antd.css';
+
+body {
+  height: 100%;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+// 全屏
+.full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// flex
+.fx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fx1 {
+  flex: 1;
+}
+
+// text-center
+.tc {
+  text-align: center;
+}
+
+// pointer
+.pointer {
+  cursor: pointer;
+}
