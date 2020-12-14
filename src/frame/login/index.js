@@ -1,6 +1,6 @@
-import React, {} from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { postUserLogin } from './service';
+import { postUserLogin, postTest } from './service';
 
 import './index.scss';
 
@@ -22,19 +22,25 @@ const tailLayout = {
 function Login() {
 
   const [form] = Form.useForm();
+  const [token, setToken] = useState(null);
 
   const handleClickSubmit = () => {
-    form.validateFields().then(values => {
+    form.validateFields().then(async (values) => {
       const { username, password, } = values;
       const postData = {
         username,
         password,
       }
-      postUserLogin(postData);
+      const { data } = await postUserLogin(postData);
+      setToken(data);
     }).catch(err => {
       console.log(err)
-    }) 
+    })
     
+  }
+
+  const handleClickTest = () => {
+    postTest({token})
   }
 
   return (
@@ -78,6 +84,9 @@ function Login() {
         <Form.Item {...tailLayout}>
           <Button type="primary" onClick={handleClickSubmit}>
             Submit
+          </Button>
+          <Button type="primary" onClick={handleClickTest}>
+            Test
           </Button>
         </Form.Item>
       </Form>
