@@ -1,4 +1,6 @@
 import axios from 'axios';
+const AUTH_TOKEN = '';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 axios.interceptors.request.use((config) => {
   return config;

@@ -28,7 +28,7 @@
 .loader-13 {
     width: 30px;
     height: 30px;
-    color: currentcolor;
+    color: #00bb2c;
     position: relative;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -133,24 +133,24 @@
 
 .loading-flash {
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: #00bb2c;
-  animation: loadFlash 1s infinite linear alternate;
-  animation-delay: .5s;
+  background-color: #AAAAB3;
+  animation: loadFlash .4s infinite linear alternate;
+  animation-delay: .2s;
 }
 
 .loading-flash::before {
   left: -15px;
-  animation: loadFlash 1s infinite alternate;
+  animation: loadFlash .4s infinite alternate;
   animation-delay: 0s;
 }
 
 .loading-flash::after {
   left: 15px;
-  animation: loadFlash 1s infinite alternate;
-  animation-delay: 1s;
+  animation: loadFlash .4s infinite alternate;
+  animation-delay: .4s;
 }
 
 .loading-flash::before,
@@ -158,18 +158,21 @@
   content: '';
   display: inline-block;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   top: 0;
-  background: #00bb2c;
+  background: #AAAAB3;
 }
 
 @keyframes loadFlash {
   0% {
-      background-color: #00bb2c;
+      background-color: #AAAAB3;
+  }
+  50% {
+    background-color: #e2e2e5;
   }
   100% {
-      background-color: #ebe6ff;
+      background-color: #e2e2e5;
   }
 }

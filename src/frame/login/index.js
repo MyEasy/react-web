@@ -22,7 +22,6 @@ const tailLayout = {
 function Login() {
 
   const [form] = Form.useForm();
-  const [token, setToken] = useState(null);
 
   const handleClickSubmit = () => {
     form.validateFields().then(async (values) => {
@@ -31,8 +30,8 @@ function Login() {
         username,
         password,
       }
-      const { data } = await postUserLogin(postData);
-      setToken(data);
+      const { code } = await postUserLogin(postData);
+      console.log(code)
     }).catch(err => {
       console.log(err)
     })
@@ -40,7 +39,7 @@ function Login() {
   }
 
   const handleClickTest = () => {
-    postTest({token})
+    postTest({})
   }
 
   return (
