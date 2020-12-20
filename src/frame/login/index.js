@@ -1,23 +1,8 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
-import { postUserLogin, postTest } from './service';
+import React from 'react';
+import { Form, Input, Button, } from 'antd';
+import { postUserLogin } from './service';
 
 import './index.scss';
-
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
 
 function Login() {
 
@@ -38,57 +23,49 @@ function Login() {
     
   }
 
-  const handleClickTest = () => {
-    postTest({})
-  }
-
   return (
-    <div className="fx login-form">
-      <Form
-        {...layout}
-        form={form}
-        initialValues={{
-          remember: true,
-        }}
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your username!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          <Button type="primary" onClick={handleClickSubmit}>
-            Submit
-          </Button>
-          <Button type="primary" onClick={handleClickTest}>
-            Test
-          </Button>
-        </Form.Item>
-      </Form>
+    <div className="fx full login-main">
+      <div className="login-container">
+        <div className="login-content">
+          <Form
+            form={form}
+            initialValues={{
+              remember: true,
+            }}
+          >
+            {/* 用户名 */}
+            <Form.Item
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: '请输入用户名!',
+                },
+              ]}
+            >
+              <Input placeholder="用户名" />
+            </Form.Item>
+            {/* 密码 */}
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: '请输入密码!',
+                },
+              ]}
+            >
+              <Input.Password placeholder="密码" />
+            </Form.Item>
+            {/* 登录/注册 */}
+            <Form.Item>
+              <Button type="primary" onClick={handleClickSubmit} className="login-content-btn">
+                登录/注册
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
     </div>
   )
 };
